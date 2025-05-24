@@ -1,0 +1,134 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      background: #ffe0f0; /* light pink background for whole page */
+    }
+    .slideshow {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      /* Pink overlay */
+      background-blend-mode: multiply;
+      background-color: rgba(255, 105, 180, 0.5); /* hot pink overlay */
+      box-shadow: inset 0 0 150px 40px rgba(255, 20, 147, 0.7);
+    }
+    .slide.show {
+      opacity: 1;
+      z-index: 1;
+    }
+    .slide h1 {
+      font-size: 3.8em;
+      text-shadow: 2px 2px 12px #000000, 0 0 25px #ff69b4;
+      animation: popIn 1.5s ease-out;
+      margin-bottom: 10px;
+    }
+    .slide h2, .slide p {
+      font-size: 2.2em;
+      color: #ffe066;
+      text-shadow: 2px 2px 15px #000000;
+      animation: fadeIn 3s ease-in;
+      margin-top: 20px;
+      max-width: 700px;
+    }
+    /* Birthday stickers container */
+    .stickers {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+      z-index: 2;
+    }
+    .sticker {
+      font-size: 3em;
+      animation: floatUp 4s ease-in-out infinite alternate;
+      cursor: default;
+      user-select: none;
+      filter: drop-shadow(0 0 4px #ff69b4);
+    }
+    /* Slight different animation delay for each sticker */
+    .sticker:nth-child(2) { animation-delay: 1.2s; }
+    .sticker:nth-child(3) { animation-delay: 2.5s; }
+    .sticker:nth-child(4) { animation-delay: 3.8s; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-15px) scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="slideshow">
+  <div class="stickers">
+    <div class="sticker" title="Balloon">🎈</div>
+    <div class="sticker" title="Cake">🎂</div>
+    <div class="sticker" title="Confetti">🎉</div>
+    <div class="sticker" title="Gift">🎁</div>
+  </div>
+
+  <div class="slide show" style="background-image: url('https://images.unsplash.com/photo-1603570419981-10a7b3fd9879?auto=format&fit=crop&w=1950&q=80');">
+    <h1>Happy Birthday! 🎉</h1>
+    <h2>Let's Celebrate! 🎈</h2>
+  </div>
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1568889381808-5e8e5c9015a0?auto=format&fit=crop&w=1950&q=80');">
+    <h1>Dear Friend 💖</h1>
+    <p>You're a gift to the world. I hope your birthday is as special as you are! 🎁</p>
+  </div>
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504199367641-aba8151af3c4?auto=format&fit=crop&w=1950&q=80');">
+    <h1>Memories Last Forever 🌟</h1>
+    <p>Thank you for the smiles, love, and support. Keep shining! ✨</p>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove('show');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('show');
+  }, 4000); // Change slide every 4 seconds
+</script>
+
+</body>
+</html><html></html>
